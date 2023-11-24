@@ -110,3 +110,4 @@ project/plugins/project/
 .bloop/
 .metals/
 .vscode/
+**/metals.sbt
