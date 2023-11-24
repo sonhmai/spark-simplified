@@ -109,3 +109,4 @@ project/plugins/project/
 **/.DS_Store
 .bloop/
 .metals/
+.vscode/
