@@ -108,3 +108,4 @@ project/plugins/project/
 .ensime
 **/.DS_Store
 .bloop/
+.metals/
