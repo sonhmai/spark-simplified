@@ -111,3 +111,6 @@ project/plugins/project/
 .metals/
 .vscode/
 **/metals.sbt
+
+# specific
+metastore_db/
