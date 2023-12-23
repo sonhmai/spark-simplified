@@ -23,29 +23,29 @@ class Dispatcher(nettyRpcEnv: NettyRpcEnv) {
   // for example, to respond to a message.
   private val endpointRefs = new ConcurrentHashMap[RpcEndpoint, RpcEndpointRef]()
 
-  def registerRpcEndpoint(
-      name: String,
-      rpcEndpoint: RpcEndpoint
-  ): RpcEndpointRef = {
-    val endpointRef = new NettyRpcEndpointRef(
-      RpcEndpointAddress(nettyEnv.address, name),
-      nettyEnv
-    )
-    endpoints.put(name, endpoint)
-    endpointRefs.put(endpoint, endpointRef)
-    endpointRef
-  }
-
-  def unregisterRpcEndpoint(name: String): Unit = {
-    endpoints.remove(name)
-    endpointRefs.values().removeIf(ref => ref.name == name)
-  }
-
-  def dispatchMessage(message: RequestMessage): Unit = {
-    val endpoint = endpoints.get(message.receiver.name)
-    if (endpoint == null) {
-      throw new SparkException(s"Could not find ${message.receiver.name}")
-    }
-    endpoint.receiveAndReply(new NettyRpcCallContext(message.senderAddress))
-  }
+//  def registerRpcEndpoint(
+//      name: String,
+//      rpcEndpoint: RpcEndpoint
+//  ): RpcEndpointRef = {
+//    val endpointRef = new NettyRpcEndpointRef(
+//      RpcEndpointAddress(nettyEnv.address, name),
+//      nettyEnv
+//    )
+//    endpoints.put(name, endpoint)
+//    endpointRefs.put(endpoint, endpointRef)
+//    endpointRef
+//  }
+//
+//  def unregisterRpcEndpoint(name: String): Unit = {
+//    endpoints.remove(name)
+//    endpointRefs.values().removeIf(ref => ref.name == name)
+//  }
+//
+//  def dispatchMessage(message: RequestMessage): Unit = {
+//    val endpoint = endpoints.get(message.receiver.name)
+//    if (endpoint == null) {
+//      throw new SparkException(s"Could not find ${message.receiver.name}")
+//    }
+//    endpoint.receiveAndReply(new NettyRpcCallContext(message.senderAddress))
+//  }
 }

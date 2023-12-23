@@ -11,8 +11,8 @@ case class Heartbeat(
     executorId: String
 )
 
-class HeartbeatReceiver(rpcEnv: RpcEnv) extends RpcEndpoint {
-  override val rpcEnv: RpcEnv                      = this.rpcEnv
+class HeartbeatReceiver(inputRpcEnv: RpcEnv) extends RpcEndpoint {
+  override val rpcEnv: RpcEnv                      = this.inputRpcEnv
   override def receive: PartialFunction[Any, Unit] = ???
   override def onStop(): Unit                      = ???
 }
