@@ -114,3 +114,4 @@ project/plugins/project/
 
 # specific
 metastore_db/
+spark-warehouse/
