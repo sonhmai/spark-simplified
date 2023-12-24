@@ -117,7 +117,8 @@ object Dependencies {
 
   val sparkDeps: Seq[ModuleID] = Seq(
     "org.apache.spark" %% "spark-core" % sparkVersion,
-    "org.apache.spark" %% "spark-sql"  % sparkVersion
+    "org.apache.spark" %% "spark-sql"  % sparkVersion,
+    "org.apache.spark" %% "spark-hive"  % sparkVersion,
   )
 
   lazy val testDependencies: Seq[ModuleID] = Seq(

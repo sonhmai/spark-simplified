@@ -11,12 +11,12 @@ class NettyRpcEnv extends RpcEnv {
 
   override def stop(endpointRef: RpcEndpointRef): Unit = {
     require(endpointRef.isInstanceOf[NettyRpcEndpointRef])
-    endpoints.remove(endpoint.name)
-    endpoint.onStop()
+//    endpoints.remove(endpoint.name)
+//    endpoint.onStop()
   }
 
   override def shutdown(): Unit = {
-    endpoints.values.foreach(endpoint => stop(endpoint))
+//    endpoints.values.foreach(endpoint => stop(endpoint))
   }
 
 }
