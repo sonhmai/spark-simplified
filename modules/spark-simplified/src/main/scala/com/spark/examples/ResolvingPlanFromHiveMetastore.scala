@@ -20,7 +20,15 @@ object ResolvingPlanFromHiveMetastore {
 
     import spark.sql
 
-    val df = sql("select * from table1")
+    sql("CREATE TABLE IF NOT EXISTS table2 (key INT, value STRING) USING parquet")
+//    sql(
+//      """
+//        |insert into table2 (key, value) values
+//        | (1, "one"),
+//        | (2, "two")
+//        |""".stripMargin)
+
+    val df = sql("select key from table2")
 
     df.explain(true)
 
