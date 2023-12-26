@@ -24,8 +24,9 @@ object ResolvingPlanFromHiveMetastore {
 //    sql(
 //      """
 //        |insert into table2 (key, value) values
-//        | (1, "one"),
-//        | (2, "two")
+//        | (3, "three")
+//        | ,(4, "four")
+//        | ,(5, "five")
 //        |""".stripMargin)
 
     val df = sql("select key from table2")
