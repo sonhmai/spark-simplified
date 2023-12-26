@@ -1,14 +1,14 @@
 package com.spark.examples
-
 import org.apache.spark.sql.SparkSession
 
 import java.io.File
 
-object ResolvingPlanFromHiveMetastore {
+object Distinct {
   def main(args: Array[String]) = {
 
     // warehouseLocation points to the default location for managed databases and tables
-    val warehouseLocation = new File("spark-warehouse").getAbsolutePath
+    val warehouseLocation = new
+        File("spark-warehouse").getAbsolutePath
 
     val spark = SparkSession
       .builder()
@@ -20,16 +20,14 @@ object ResolvingPlanFromHiveMetastore {
 
     import spark.sql
 
-    sql("CREATE TABLE IF NOT EXISTS table2 (key INT, value STRING) USING parquet")
-//    sql(
-//      """
-//        |insert into table2 (key, value) values
-//        | (3, "three")
-//        | ,(4, "four")
-//        | ,(5, "five")
-//        |""".stripMargin)
+    val df_input = sql("select * from table2").cache()
+    println(s"num partitions df_input ${df_input.rdd.getNumPartitions}")
 
-    val df = sql("select key from table2")
+    df_input.show()
+
+    val df = df_input.distinct()
+
+    println(s"num partitions ${df.rdd.getNumPartitions}")
 
     df.explain(true)
 
