@@ -9,7 +9,7 @@ import scala.concurrent.Future
  */
 trait RpcEndpointRef {
   // send message without waiting for response
-  def send(message: String): Unit
+  def send(message: Any): Unit
 
   // send message and receive a response.
   // Future will be completed with response from endpoint -> handled async.
