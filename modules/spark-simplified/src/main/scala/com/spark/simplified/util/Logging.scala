@@ -22,4 +22,8 @@ trait Logging {
   def logWarning(msg: => String): Unit = {
     log.warn(msg)
   }
+
+  def logInfo(msg: => String): Unit = {
+    log.info(msg)
+  }
 }
