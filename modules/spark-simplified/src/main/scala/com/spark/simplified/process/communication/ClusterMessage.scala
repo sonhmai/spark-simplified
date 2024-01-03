@@ -1,4 +1,4 @@
-package com.spark.simplified.deploy.communication
+package com.spark.simplified.process.communication
 
 import com.spark.simplified.util.SerializableBuffer
 import com.spark.simplified.work.task.TaskState.TaskState

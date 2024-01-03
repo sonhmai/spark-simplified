@@ -1,7 +1,7 @@
 package com.spark.simplified.process.executor
 
 import com.spark.simplified.SparkEnv
-import com.spark.simplified.deploy.communication.{LaunchTask, StatusUpdate}
+import com.spark.simplified.process.communication.{LaunchTask, StatusUpdate}
 import com.spark.simplified.rpc.{RpcEndpointRef, RpcEnv}
 import com.spark.simplified.scheduler.TaskDescription
 import com.spark.simplified.util.Logging
