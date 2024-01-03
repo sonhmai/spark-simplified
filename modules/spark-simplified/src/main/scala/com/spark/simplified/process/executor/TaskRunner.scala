@@ -1,4 +1,5 @@
-package com.spark.simplified.deploy.executor
+package com.spark.simplified.process.executor
+
 import com.spark.simplified.scheduler.TaskDescription
 
 class TaskRunner(

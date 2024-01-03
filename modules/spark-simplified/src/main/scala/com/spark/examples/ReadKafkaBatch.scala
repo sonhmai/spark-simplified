@@ -30,9 +30,9 @@ object ReadKafkaBatch {
 
     df_input.count()
 
-    df_input.explain(true)
-
-    df_input.show()
+//    df_input.explain(true)
+//
+//    df_input.show()
 
   }
 }

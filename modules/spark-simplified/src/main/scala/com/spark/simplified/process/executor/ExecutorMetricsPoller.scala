@@ -1,4 +1,5 @@
-package com.spark.simplified.deploy.executor
+package com.spark.simplified.process.executor
+
 import com.spark.simplified.MemoryManager
 
 /** A class that polls executor metrics, and tracks their peaks per task and per stage.

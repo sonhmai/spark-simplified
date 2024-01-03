@@ -1,4 +1,4 @@
-package com.spark.simplified.deploy.executor
+package com.spark.simplified.process.executor
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder
 import com.spark.simplified.SparkEnv

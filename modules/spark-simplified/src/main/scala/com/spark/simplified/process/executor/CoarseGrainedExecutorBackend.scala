@@ -1,4 +1,4 @@
-package com.spark.simplified.deploy.executor
+package com.spark.simplified.process.executor
 
 import com.spark.simplified.SparkEnv
 import com.spark.simplified.deploy.communication.{LaunchTask, StatusUpdate}
