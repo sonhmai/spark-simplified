@@ -17,7 +17,6 @@ import org.apache.spark.rpc.ThreadSafeRpcEndpoint
   * invoked with the cause. If `onError` throws an error, [[RpcEnv]] will ignore it.
   */
 trait RpcEndpoint {
-  val rpcEnv: RpcEnv
 
   // PartialFunction[Any, Unit] is a func takes Any as input and output Unit
 
