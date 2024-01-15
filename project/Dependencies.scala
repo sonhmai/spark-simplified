@@ -19,7 +19,8 @@ object Dependencies {
 
   lazy val sangriaVersion      = "2.1.0"
   lazy val sangriaCirceVersion = "1.3.1"
-  val sparkVersion             = "3.3.2" // glue 4 uses 3.3.0, spark starts support scala 2.13 only since 3.2.0
+  val sparkVersion             = "3.5.0" // Delta 3.0.x can only be used with Spark >= 3.5
+  val sparkGlueVersion             = "3.3.2" // glue 4 uses 3.3.0, spark starts support scala 2.13 only since 3.2.0, only delta <3
 
   // logging
   lazy val LogbackVersion   = "1.2.3"
@@ -120,6 +121,8 @@ object Dependencies {
     "org.apache.spark" %% "spark-sql"  % sparkVersion,
     "org.apache.spark" %% "spark-sql-kafka-0-10"  % sparkVersion,
     "org.apache.spark" %% "spark-hive"  % sparkVersion,
+    "org.apache.spark" %% "spark-catalyst"  % sparkVersion, // delta-spark provided
+    "io.delta" %% "delta-spark"  % "3.0.0",
   )
 
   lazy val testDependencies: Seq[ModuleID] = Seq(
