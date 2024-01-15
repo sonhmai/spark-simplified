@@ -12,7 +12,7 @@ case class Heartbeat(
 )
 
 class HeartbeatReceiver(inputRpcEnv: RpcEnv) extends RpcEndpoint {
-  override val rpcEnv: RpcEnv                      = this.inputRpcEnv
   override def receive: PartialFunction[Any, Unit] = ???
-  override def onStop(): Unit                      = ???
+
+  override def receiveAndReply(): PartialFunction[Any, Unit] = ???
 }

@@ -21,7 +21,7 @@ class NettyRpcEndpointRef(name: String, env: NettyRpcEnv) extends RpcEndpointRef
     })
 
   // send message without waiting for response
-  override def send(message: String): Unit = {
+  override def send(message: Any): Unit = {
     val channel = bootstrap.connect("localhost", 0).sync().channel()
     channel.writeAndFlush(s"$name:$message").sync()
     channel.closeFuture().sync()
