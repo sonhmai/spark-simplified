@@ -1,4 +1,5 @@
 package com.spark.examples
+
 import org.apache.spark.sql.SparkSession
 
 import java.io.File
