@@ -13,7 +13,6 @@ package com.spark.simplified.sql.connector.read
  *
  * @since 3.0.0
  */
- */
 trait InputPartition extends Serializable {
 
 
