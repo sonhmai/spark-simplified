@@ -62,6 +62,13 @@ Thread
 - rpc
   - remote procedure call layer that node communication is built upon.
 
+## Structure
+
+sql
+    execution -> physical plan
+        datasources
+            FileFormat -> trait to read/write files from/to InternalRow format
+            parquet
 
 ## RPC
 
