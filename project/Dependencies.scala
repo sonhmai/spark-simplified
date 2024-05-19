@@ -60,6 +60,7 @@ object Dependencies {
 
   val hadoopDeps: Seq[ModuleID] = Seq(
     "org.apache.hadoop" % "hadoop-common"                % hadoopVersion,
+    "org.apache.hadoop" % "hadoop-client-api"            % hadoopVersion,
     "org.apache.hadoop" % "hadoop-mapreduce-client-core" % hadoopVersion
   )
 

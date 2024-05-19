@@ -10,9 +10,15 @@ lazy val sparkSimplified = (project in file("modules/spark-simplified"))
     libraryDependencies ++= Dependencies.sparkSimplifiedDeps
   )
 
+lazy val parquetHadoop = (project in file("modules/parquet-hadoop"))
+  .settings(
+    libraryDependencies ++= Dependencies.sparkSimplifiedDeps
+  )
+
 lazy val root = (project in file("."))
   .settings(name := "spark-simplified")
   .aggregate(
+    parquetHadoop,
     sparkSimplified,
     sparkExamples
   )
