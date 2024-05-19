@@ -41,6 +41,12 @@ Issues with standard Spark output committer
 
 ## [Best practices to optimize data access performance from Amazon EMR and AWS Glue to Amazon S3](https://aws.amazon.com/blogs/big-data/best-practices-to-optimize-data-access-performance-from-amazon-emr-and-aws-glue-to-amazon-s3/)
 
+```
+Previously, Amazon EMR used the s3n and s3a file systems. 
+While both still work, we recommend that you use the s3 URI scheme 
+for the best performance, security, and reliability.
+```
+
 - 3,500 PUT/COPY/POST/DELETE
 - 5,500 GET/HEAD requests per second per prefix in a bucket
 - best practices
@@ -90,6 +96,7 @@ we recommend writing to HDFS and then transferring output files to Amazon S3 usi
    - https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-committer-multipart.html
    - https://repost.aws/questions/QUmVnZdR3KQ-60ugXxXLBPIg/emrfs-write-errors
    - https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-fs.html
+   - https://aws.amazon.com/blogs/big-data/improve-apache-spark-write-performance-on-apache-parquet-formats-with-the-emrfs-s3-optimized-committer/
 
 4. https://stackoverflow.com/questions/46375631/setting-spark-speculation-in-spark-2-1-0-while-writing-to-s3
 5. https://hadoop.apache.org/docs/current/hadoop-aws/tools/hadoop-aws/committers.html
