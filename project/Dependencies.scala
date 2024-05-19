@@ -60,6 +60,7 @@ object Dependencies {
 
   val hadoopDeps: Seq[ModuleID] = Seq(
     "org.apache.hadoop" % "hadoop-common"                % hadoopVersion,
+    "org.apache.hadoop" % "hadoop-client-api"            % hadoopVersion,
     "org.apache.hadoop" % "hadoop-mapreduce-client-core" % hadoopVersion
   )
 
@@ -194,6 +195,10 @@ object Dependencies {
 
   val sparkExamplesDeps: Seq[ModuleID] = sparkDeps ++
     hadoopDeps ++
+    parquetDeps ++
+    testDependencies
+
+  val sparkSimplifiedDeps: Seq[ModuleID] = hadoopDeps ++
     parquetDeps ++
     testDependencies
 
