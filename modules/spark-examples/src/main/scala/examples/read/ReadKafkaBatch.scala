@@ -1,4 +1,4 @@
-package com.spark.examples
+package examples.read
 
 import org.apache.spark.sql.SparkSession
 

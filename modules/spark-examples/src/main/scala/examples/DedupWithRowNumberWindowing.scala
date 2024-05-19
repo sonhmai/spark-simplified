@@ -1,4 +1,4 @@
-package com.spark.examples
+package examples
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.expressions.Window
