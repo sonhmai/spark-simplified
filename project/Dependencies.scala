@@ -197,4 +197,8 @@ object Dependencies {
     parquetDeps ++
     testDependencies
 
+  val sparkSimplifiedDeps: Seq[ModuleID] = hadoopDeps ++
+    parquetDeps ++
+    testDependencies
+
 }
