@@ -8,15 +8,22 @@ Contents
 
 
 Terms
-- FileOutputFormatCommitter
-- S3A Committer
+- `FileOutputFormatCommitter`: manages the commit of files created by single task to final output of a query.
+- `S3A Committer`: new committer which can commit work directly to S3 where standard committer cannot do.
 - hadoop-aws module and S3A filesystem client
 - FileFormatWriter
 - FileOutputCommitter
 - SQLHadoopMapReduceCommitProtocol
 - FileFormatDataWriter
   - `SingleDirectoryDataWriter` - bypass use of partitions and buckets
-  
+
+### Requirements for file system in order for Spark to commit task output
+1. `Consistent listing`: 
+   - When you list a directory, you see all the files which have been created in it, 
+   - and no files which are not in it (i.e. have been deleted).
+2. `Atomic rename`
+    - No other process across the cluster may rename a file or directory to the same path.
+    - If the rename fails for any reason, either the data is at the original location, or it is at the destination, in which case the rename actually succeeded.
 
 
 In Hadoop, `FileOutputFormatCommitter` is responsible for managing the process
@@ -27,6 +34,8 @@ to the final destination during commit phase.
 
 What is speculative execution in Spark when writing output?
 
+What are the risks of using classic `FileOutputCommitter` to commit work to S3?
+- loss or corruption of generated data.
 
 1. generating temp dir beneath dir of your final target.
 2. creating new file for task in attempt_ dir.
@@ -38,6 +47,43 @@ Issues with standard Spark output committer
 1. Consistency and Atomicity: S3 does not provide strong consistency for listing files and renaming operations.
 2. Multi-part uploads
 3. Retries and Failures: `FileOutputCommitter` can lead to incomplete output.
+
+What is the commit protocol on HDFS and similar file systems?
+
+![img.png](images/classic_commit_protocol.png)
+
+```
+# sequencediagram.org
+
+title class commit protocol
+
+entryspacing 0.8
+job->task: write
+task->DestinationDir: write to _temporary/task_attempt_id
+task->task: start task commit
+activate task
+alt task commit_v1
+task->DestinationDir: rename files from\n _temporary/task_attempt_id\n to _temporary/job_attempt_id
+else task commit_v2
+task->DestinationDir: rename files from\n _temporary/task_attempt_id\n to destination
+end
+task->task: end commit
+deactivate task
+
+job->job: start job commit
+activate job
+
+alt job commit_v1
+job->DestinationDir: rename from\n _temporary/job_attempt_id\n to destination
+else job commit_v2
+job->DestinationDir: write _SUCCESS
+job->DestinationDir: delete _temporary
+end
+
+job->job: end commit
+deactivate job
+```
+
 
 ## [Best practices to optimize data access performance from Amazon EMR and AWS Glue to Amazon S3](https://aws.amazon.com/blogs/big-data/best-practices-to-optimize-data-access-performance-from-amazon-emr-and-aws-glue-to-amazon-s3/)
 
